@@ -1,0 +1,32 @@
+#stages:
+#  - test
+#  - deploy
+
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+
+test:
+  image: python:3.7.3
+  allow_failure: false
+#  stage: test
+  before_script:
+    - make deps
+  script:
+    - make test
+  only:
+    - master
+
+deploy:
+  image: python:3.7.3
+  allow_failure: false
+#  stage: deploy
+  before_script:
+    - make deps
+  script:
+    - make
+  artifacts:
+    name: "$CI_COMMIT_REF_NAME"
+    untracked: false
+    paths:
+      - ./artifacts/
+    expire_in: 3 days

@@ -1,0 +1,8 @@
+{
+  "name": "arma-pbo-ci-test",
+  "prefix": "jb",
+  "author": "JonBons",
+  "files": [
+    "mod.cpp"
+  ]
+}
