@@ -20,8 +20,6 @@ deps:
 
 prepare:
 	mkdir -p .build/
-	mkdir -p .build/bin/
-	mkdir -p .build/keys
 
 test: prepare
 	git clone https://github.com/TheMysteriousVincent/sqf.git .build/sqf
@@ -36,5 +34,5 @@ removeAll:
 	rm -Rf .build/
 
 build: 
-	$(HEMTT) build
+	$(HEMTT) build --release
 

@@ -28,5 +28,5 @@ deploy:
     name: "$CI_COMMIT_REF_NAME"
     untracked: false
     paths:
-      - ./artifacts/
+      - ./releases/
     expire_in: 3 days
