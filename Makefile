@@ -8,5 +8,5 @@ deps:
 	tar xf /tmp/hemtt-v0.6.0-x86_64-unknown-linux-gnu.tar.gz -C /tmp/
 
 build: 
-	$(HEMTT) build --release
+	$(HEMTT) build
 
