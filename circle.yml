@@ -1,6 +1,15 @@
 version: 2
 jobs:
 
+  deps:
+    docker:
+      - image: acemode/armake:master
+    steps:
+      - checkout
+      - run: 
+          name: Deps
+          command: make deps
+
   linting:
     docker:
       - image: acemod/sqflint:latest
@@ -27,7 +36,9 @@ workflows:
   version: 2
   build-job:
     jobs:
+      - deps
       - linting
       - armake:
           requires:
             - linting
+            - deps
