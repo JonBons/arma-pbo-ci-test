@@ -1,0 +1,33 @@
+version: 2
+jobs:
+
+  linting:
+    docker:
+      - image: acemod/sqflint:latest
+    steps:
+      - checkout
+      - run:
+          name: Lint sqf code
+          command: sqflint -d addons || true
+
+  armake:
+    docker:
+      - image: acemod/armake:master
+    steps:
+      - checkout
+      - run:
+          name: Version
+          command: armake --version
+      - run:
+          name: Build
+          command: |
+            make -j 4
+
+workflows:
+  version: 2
+  build-job:
+    jobs:
+      - linting
+      - armake:
+          requires:
+            - linting
