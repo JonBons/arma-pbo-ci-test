@@ -12,7 +12,7 @@ jobs:
 
   armake:
     docker:
-      - image: jonbons/docker-hemtt:master
+      - image: jonbons/docker-hemtt:latest
     steps:
       - checkout
       - run:
