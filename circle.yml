@@ -10,21 +10,23 @@ jobs:
           name: Lint sqf code
           command: sqflint -d addons || true
 
-  armake:
+  hemtt:
     docker:
-      - image: jonbons/docker-hemtt:latest
+      - image: hemtt/hemtt:master
     steps:
       - checkout
       - run:
+          name: Version
+          command: hemtt --version
+      - run:
           name: Build
-          command: |
-            make -j 4
+          command: hemtt build
 
 workflows:
   version: 2
   build-job:
     jobs:
       - linting
-      - armake:
+      - hemtt:
           requires:
             - linting
