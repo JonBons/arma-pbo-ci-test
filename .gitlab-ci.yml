@@ -6,27 +6,21 @@ variables:
   GIT_SSL_NO_VERIFY: "true"
 
 test:
-  image: python:3.7.3
+  image: hemtt/hemtt:master
   allow_failure: false
 #  stage: test
   before_script:
-    - make deps
+    - hemtt --version
   script:
     - make test
   only:
     - master
 
 deploy:
-  image: python:3.7.3
+  image: hemtt/hemtt:master
   allow_failure: false
 #  stage: deploy
   before_script:
-    - make deps
+    - hemtt --version
   script:
-    - make
-  artifacts:
-    name: "$CI_COMMIT_REF_NAME"
-    untracked: false
-    paths:
-      - ./releases/
-    expire_in: 3 days
+    - hemtt build
