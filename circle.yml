@@ -3,7 +3,7 @@ jobs:
 
   deps:
     docker:
-      - image: acemode/armake:master
+      - image: acemod/armake:master
     steps:
       - checkout
       - run: 
